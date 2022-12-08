@@ -8,13 +8,17 @@ if [ "$(id -u)" != "0" ]; then
     exit 1
 fi
 
-POS_ARGS=()
+# POS_ARGS=()
 ADD=FALSE
 REMOVE=FALSE
 HELP=TRUE
 
 while [[ $# -gt 0 ]]; do
     case "$1" in
+    -h|--h)
+        HELP=TRUE
+        shift
+        ;;
     -a|--add)
         ADD=TRUE
         HELP=FALSE
@@ -35,7 +39,7 @@ while [[ $# -gt 0 ]]; do
     #     ;;
     esac
 done
-set -- "${POS_ARGS[@]}"
+# set -- "${POS_ARGS[@]}"
 
 # Option -r to remove an entry from the hosts file by given IP address or hostname
 if [ REMOVE == TRUE ]; then
